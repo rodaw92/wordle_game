@@ -11,6 +11,8 @@ function App() {
 
   const [solution, setSolution] = useState('');
   const [gusses, setGusses] = useState(Array(6).fill(null)); // to keep track for all word that guessed
+  const [currentGuess, setCurrentGuess] = useState('');
+
   useEffect(() => {
 
     const fetchWord = async () => {
@@ -23,17 +25,28 @@ function App() {
 
   }, []);
 
+  useEffect(() => {
+    const handleType = (event) => {
+      setCurrentGuess(oldGuess => oldGuess + event.key);
+
+
+    };
+    window.addEventListener('keydown', handleType);
+    return () => window.removeEventListener('keydown', handleType);
+
+  }, [])
+
   return (
     <div className="board">
 
       { // to craete a board
-        gusses.map(guess => {
+        gusses.map((guess, i) => {
+          const isCurrentGuess = i === gusses.findIndex(val => val == null)
           return (
-            <Line guess={guess ?? ''} />
+            <Line guess={isCurrentGuess ? currentGuess : guess ?? ''} />
           );
         })
       }
-
     </div>
   );
 }
