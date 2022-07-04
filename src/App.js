@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="board">
+
       { // to craete a board
         gusses.map(guess => {
           return (
