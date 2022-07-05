@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     const handleType = (event) => {
-      setCurrentGuess(oldGuess => oldGuess + event.key);
+      setCurrentGuess(oldGuess => oldGuess + event.key); // event.key is whatever the user typed using the keyboard 
 
 
     };

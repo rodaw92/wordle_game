@@ -11,4 +11,7 @@ setSolution from useState solution to this random word.
  * finally return the tiles array
 -------------------------------
 Handle making a guess:
-1. 
+1. create another useEffect Hook and a function handleType which takes an input 'event', which is a key board event.
+2. add an event listener 'keydown' , means on key down we call handleType function. then on unmount we remove the event listener 
+3. in handleType we figure out what the key is, that was typed and add it to the currentGuess, which is created by useState Hook
+4. we can replace currentGuess by oldGuess to improve the performance by get red of currentGuess from the dependency array in useEffect Hook.
