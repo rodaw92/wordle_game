@@ -9,9 +9,10 @@ const WORD_LEGNTHt = 5;
 
 function App() {
 
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState('HELLO');
   const [gusses, setGusses] = useState(Array(6).fill(null)); // to keep track for all word that guessed
   const [currentGuess, setCurrentGuess] = useState('');
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
 
@@ -27,6 +28,26 @@ function App() {
 
   useEffect(() => {
     const handleType = (event) => {
+      if (isGameOver) {
+        return;
+      }
+      if (event.key === 'Enter') {
+        if (currentGuess.length !== 5) {
+          return;
+        }
+        const isCorrect = solution === currentGuess;
+        if (isCorrect) {
+          setIsGameOver(true);
+        }
+
+      }
+      if (currentGuess.length >= 5) {
+        return;
+      }
+      if (event.key === 'Backspace') {
+        setCurrentGuess(currentGuess.slice(0, -1));
+        return;
+      }
       setCurrentGuess(oldGuess => oldGuess + event.key); // event.key is whatever the user typed using the keyboard 
 
 
@@ -34,7 +55,7 @@ function App() {
     window.addEventListener('keydown', handleType);
     return () => window.removeEventListener('keydown', handleType);
 
-  }, [])
+  }, [currentGuess, isGameOver, solution])
 
   return (
     <div className="board">

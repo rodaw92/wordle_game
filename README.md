@@ -19,3 +19,13 @@ Handle making a guess:
 Handle adding the guess to our actual tile:
 1. In Line component add isCurrentGuess as to check if the index i is the same index of where we currently are, which is going to be the first guess of our guesses array that is null now gusses.findindex()
 2. after this check if we are on the current guess so use currentGuess Hook 
+------------
+Handle submit the word and see if it is correct
+1. in useEffect add pressing on Enter.
+2. check if the guess is currently of legnth 5. if yes handle the submit BY USING isCorrect.
+3. stop playing by defininf isGameOver. set isGameover only if the guess is correct
+4. handle if the user enter more than 5 chars
+5. handle backspace, by defining if statment and then add the currentGuess to the dependency array 
+------
+
+
