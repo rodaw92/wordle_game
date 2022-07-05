@@ -15,3 +15,7 @@ Handle making a guess:
 2. add an event listener 'keydown' , means on key down we call handleType function. then on unmount we remove the event listener 
 3. in handleType we figure out what the key is, that was typed and add it to the currentGuess, which is created by useState Hook
 4. we can replace currentGuess by oldGuess to improve the performance by get red of currentGuess from the dependency array in useEffect Hook.
+--------------------
+Handle adding the guess to our actual tile:
+1. In Line component add isCurrentGuess as to check if the index i is the same index of where we currently are, which is going to be the first guess of our guesses array that is null now gusses.findindex()
+2. after this check if we are on the current guess so use currentGuess Hook 
