@@ -9,7 +9,7 @@ const WORD_LEGNTHt = 5;
 
 function App() {
 
-  const [solution, setSolution] = useState('HELLO');
+  const [solution, setSolution] = useState('hello');
   const [gusses, setGusses] = useState(Array(6).fill(null)); // to keep track for all word that guessed
   const [currentGuess, setCurrentGuess] = useState('');
   const [isGameOver, setIsGameOver] = useState(false);
@@ -21,7 +21,7 @@ function App() {
       const response = await fetch(API_URL);
       const words = await response.json();
       const randomWord = words[Math.floor(Math.random() * words.lenght)];
-      setSolution(randomWord);
+      // setSolution(randomWord);
     };
     fetchWord();
 
@@ -88,13 +88,13 @@ function Line({ guess, isFinal, solution }) {
 
     if (isFinal) {
       if (char === solution[i]) {
-        className += 'correct';
+        className += ' correct';
       }
       else if (solution.includes(char)) {
-        className += 'close';
+        className += ' close';
       }
       else {
-        className += 'incorrect';
+        className += ' incorrect';
       }
     }
 
