@@ -14,6 +14,7 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState('');
   const [isGameOver, setIsGameOver] = useState(false);
 
+
   useEffect(() => {
 
     const fetchWord = async () => {
@@ -35,6 +36,10 @@ function App() {
         if (currentGuess.length !== 5) {
           return;
         }
+        const newGuesses = [...gusses];
+        newGuesses[gusses.findIndex(val => val == null)] = currentGuess;
+        setGusses(newGuesses);
+        setCurrentGuess('');
         const isCorrect = solution === currentGuess;
         if (isCorrect) {
           setIsGameOver(true);
@@ -64,7 +69,10 @@ function App() {
         gusses.map((guess, i) => {
           const isCurrentGuess = i === gusses.findIndex(val => val == null)
           return (
-            <Line guess={isCurrentGuess ? currentGuess : guess ?? ''} />
+            <Line guess={isCurrentGuess ? currentGuess : guess ?? ''}
+              isFinal={!isCurrentGuess && guess != null}
+              solution={solution}
+            />
           );
         })
       }
@@ -72,11 +80,25 @@ function App() {
   );
 }
 
-function Line({ guess }) {
+function Line({ guess, isFinal, solution }) {
   const tiles = [];
   for (let i = 0; i < WORD_LEGNTHt; i++) {
     const char = guess[i];
-    tiles.push(<div key={i} className='tile'>{char}</div>)
+    let className = 'tile';
+
+    if (isFinal) {
+      if (char === solution[i]) {
+        className += 'correct';
+      }
+      else if (solution.includes(char)) {
+        className += 'close';
+      }
+      else {
+        className += 'incorrect';
+      }
+    }
+
+    tiles.push(<div key={i} className={className}>{char}</div>)
   }
   return (
     <div className='line'>

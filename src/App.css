@@ -19,3 +19,15 @@
   justify-content: center;
   text-transform: uppercase;
 }
+
+.correct {
+  background-color: green;
+}
+
+.close {
+  background-color: yellow;
+}
+
+.incorrect {
+  background-color: lightgray;
+}
