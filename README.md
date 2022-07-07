@@ -37,6 +37,8 @@ Change the color of tile if it is correct, incorrect and close
 7. update the css to make the colour
 8. when hitting enter save the currentGuess as newGuesses
 -------
+handle if the event.key is a letter
+1.  add regexp to chose from letters (a-z) just one
 
 
 

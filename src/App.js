@@ -53,7 +53,10 @@ function App() {
         setCurrentGuess(currentGuess.slice(0, -1));
         return;
       }
-      setCurrentGuess(oldGuess => oldGuess + event.key); // event.key is whatever the user typed using the keyboard 
+      const isLetter = event.key.match(/^[a-z]{1}$/) != null;
+      if (isLetter) {
+        setCurrentGuess(oldGuess => oldGuess + event.key); // event.key is whatever the user typed using the keyboard 
+      }
 
 
     };
