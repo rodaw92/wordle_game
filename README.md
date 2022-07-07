@@ -27,5 +27,16 @@ Handle submit the word and see if it is correct
 4. handle if the user enter more than 5 chars
 5. handle backspace, by defining if statment and then add the currentGuess to the dependency array 
 ------
+Change the color of tile if it is correct, incorrect and close
+1. add className='tile' to line function.
+2. to check this only if we press enter, add is Final to Line function
+3. to check wether the guess isFinal if it is not a currentGuess and guess in not null
+4. if isFinal is true so we can add the other classes correct, incorrect and close, by defing a className.
+5. if correcr so the char is equal to soluition[i]
+6. if it is close check if the char is includeed in the solution
+7. update the css to make the colour
+8. when hitting enter save the currentGuess as newGuesses
+-------
+
 
 
